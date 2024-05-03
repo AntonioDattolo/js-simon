@@ -1,36 +1,73 @@
 let stamp = document.querySelector("h1");
 let num = [];
 let userNum = [];
-//FUNZIONE PER GENERARE 5 NUMERI RANDOM E INSERIRLI IN UN ARRAY
+let  res ;
+let gen = generateNum();
 function generateNum() {
     for (let x = 1; x <=5 ; x++) {
         let random = Math.floor(Math.random() * (9 - 1) + 1);
         num.push(random);
     }
+    stamp.innerText = num;
+
 }
 
-let gen = generateNum();
+let y = setTimeout(function star(){
+    stamp.innerText="";
+
+},2000)
+
+
+
 console.log(num)
 // FUNZIONE PER CHIEDERE 5 NUMERI ALL'UTENTE ED INSERIRLI IN UN ALTRO ARRAY
+let z = setInterval(userNumInput,2300);
 function userNumInput() {
-    for (let x = 1; x <= 5; x++) {
-       let user = parseInt(prompt(`Inserisci numero che hai visto`));
-       userNum.push(user);
+    if(userNum.length < 5){
+        for(let x = 1; x <= 5; x++) {
+        let user = prompt(`Inserisci numero che hai visto`);
+        userNum.push(user);
+        console.log( `il numero inserito è ${user}`)
+        res  = document.createElement("h5");
+        }
     }
-}
-let user = userNumInput();
-console.log(userNum)
+    
+    check();
+}  
+
+
+
+
+
+
+
+
+
+
+
 
 // ciclo per cconfronto dei due array
-let pos;
-let i = num.length - 1
-while(i <= num.length){
-    pos = userNum[i];
-    i++;
-    console.log(pos)
-}
-if (userNum[i] == num[i]){
-    console.log("corretto")
-}else {
-    console.log("errato")
+function check(){
+    let x = num.length -1
+    while(x >= 0){
+        user = userNum[x];
+        console.log(user)
+        x--
+        if(num[x] == userNum[x]){
+            console.log("corretto")
+            
+            res.classList.add("true")
+            stamp.append(res);
+            res.innerText=`  ${user}`;
+                
+        }else{
+            console.log("errato")
+            
+            res.classList.add("false")
+            stamp.append(res);
+            res.innerText=`  ${user}`;
+        }
+        
+    }  
+    clearInterval(z)   
 }

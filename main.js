@@ -31,8 +31,8 @@ function userNumInput() {
 
 // ciclo per cconfronto dei due array
 function check(){
-    let x = num.length - 1
-    while(x >= 0){
+    let x = 0
+    while(x <= num.length - 1){
         user = userNum[x];
         console.log(user)
         res  = document.createElement("span");
@@ -49,7 +49,7 @@ function check(){
              stamp.append(res);
              res.innerText=`  ${user}`;
         }
-        x--
+        x++
     }  
     clearInterval(z)   
 }

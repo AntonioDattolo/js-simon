@@ -1,7 +1,7 @@
 let stamp = document.querySelector("h1");
 let num = [];
 let userNum = [];
-let  res ;
+let res ;
 let gen = generateNum();
 function generateNum() {
     for (let x = 1; x <=5 ; x++) {
@@ -9,15 +9,11 @@ function generateNum() {
         num.push(random);
     }
     stamp.innerText = num;
-
 }
 
 let y = setTimeout(function star(){
     stamp.innerText="";
-
 },2000)
-
-
 
 console.log(num)
 // FUNZIONE PER CHIEDERE 5 NUMERI ALL'UTENTE ED INSERIRLI IN UN ALTRO ARRAY
@@ -27,24 +23,11 @@ function userNumInput() {
         for(let x = 1; x <= 5; x++) {
         let user = parseInt(prompt(`Inserisci numero che hai visto`));
         userNum.push(user);
-        console.log( `il numero inserito è ${user}`)
-        
+        console.log( `il numero inserito è ${user}`)        
         }
     }
-    
     check();
 }  
-
-
-
-
-
-
-
-
-
-
-
 
 // ciclo per cconfronto dei due array
 function check(){
@@ -53,14 +36,12 @@ function check(){
         user = userNum[x];
         console.log(user)
         res  = document.createElement("span");
-        
         if(num.includes(userNum[x])){
             console.log("corretto")
             
              res.classList.add("true")
              stamp.append(res);
-             res.innerText=`  ${user}`;
-                
+             res.innerText=`  ${user}`;      
         }else{
             console.log("errato")
             
